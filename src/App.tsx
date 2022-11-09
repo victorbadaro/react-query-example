@@ -2,7 +2,7 @@ import { useFetchRepos } from './queries/repos';
 import './styles/global.css';
 
 export function App() {
-  const { data: repos } = useFetchRepos();
+  const { data: repos } = useFetchRepos('victorbadaro');
 
   return (
     <>
