@@ -1,20 +1,14 @@
 import { useEffect, useState } from 'react';
-import { api } from './services/api';
+import { getRepos } from './queries/repos';
+import { Repo } from './queries/repos/types';
 import './styles/global.css';
-
-interface Repo {
-  id: number;
-  name: string;
-  description: string;
-  html_url: string;
-}
 
 export function App() {
   const [repos, setRepos] = useState<Repo[]>([]);
 
   useEffect(() => {
     (async () => {
-      const { data } = await api.get<Repo[]>('/users/victorbadaro/repos');
+      const data = await getRepos('victorbadaro');
 
       setRepos(data);
     })();
@@ -23,15 +17,7 @@ export function App() {
   return (
     <>
       <h1>Repos</h1>
-      {repos.length > 0 ? (
-        <ul>
-          {repos.map(repo => (
-            <li key={repo.id}>
-              <a href={repo.html_url} target="_blank">{repo.name}</a> - <span>{repo.description}</span>
-            </li>
-          ))}
-        </ul>
-      ) : null}
+      {repos.map(repo => <li key={repo.id}>{repo.name}</li>)}
     </>
   );
 }
