@@ -12,11 +12,14 @@
 		"lint:write": "biome lint --write",
 		"check": "biome check",
 		"check:write": "biome check --write",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"server": "json-server db.json"
 	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
 		"@tailwindcss/vite": "^4.2.2",
+		"@tanstack/react-query": "^5.99.0",
+		"axios": "^1.15.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"lucide-react": "^1.8.0",
@@ -34,6 +37,7 @@
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^6.0.1",
+		"json-server": "1.0.0-beta.15",
 		"typescript": "~6.0.2",
 		"vite": "^8.0.4"
 	}
