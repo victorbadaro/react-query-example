@@ -5,9 +5,6 @@ on:
     branches: ['main']
   workflow_dispatch:
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 permissions:
   contents: read
   pages: write
@@ -31,11 +28,10 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'pnpm'
+          node-version: 24
 
-      - name: Enable pnpm
-        run: corepack enable
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
         run: pnpm install
