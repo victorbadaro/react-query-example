@@ -1,4 +1,5 @@
 import { Trash2 } from 'lucide-react';
+import { useNavigate } from 'react-router';
 import { useDeleteUser } from '@/hooks/users/use-delete-user';
 import { useUsers } from '@/hooks/users/use-users';
 import { Button } from './ui/button';
@@ -6,6 +7,7 @@ import { Spinner } from './ui/spinner';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table';
 
 export function UsersList() {
+	const navigate = useNavigate();
 	const { data, isLoading, error } = useUsers();
 	const { mutate: deleteUser } = useDeleteUser();
 
@@ -34,7 +36,7 @@ export function UsersList() {
 			</TableHeader>
 			<TableBody>
 				{data?.map((user) => (
-					<TableRow key={user.id} className="cursor-pointer">
+					<TableRow key={user.id} className="cursor-pointer" onClick={() => navigate(user.id)}>
 						<TableCell>{user.id}</TableCell>
 						<TableCell>{user.name}</TableCell>
 						<TableCell>{user.email}</TableCell>

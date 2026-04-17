@@ -1,6 +1,7 @@
 /** biome-ignore-all lint/suspicious/noDoubleEquals: shadcn components */
 /** biome-ignore-all lint/a11y/useSemanticElements: shadcn components */
 /** biome-ignore-all lint/suspicious/noArrayIndexKey: shadcn components */
+
 'use client';
 
 import { cva, type VariantProps } from 'class-variance-authority';

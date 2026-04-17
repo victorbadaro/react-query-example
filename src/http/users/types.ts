@@ -4,6 +4,8 @@ type User = {
 	email: string;
 };
 
-type NewUser = Omit<User, 'id'>;
+type UserPayload = Omit<User, 'id'>;
 
-export type { NewUser, User };
+type UserToBeUpdatedPayload = Pick<User, 'id'> & Partial<UserPayload>;
+
+export type { User, UserPayload, UserToBeUpdatedPayload };
