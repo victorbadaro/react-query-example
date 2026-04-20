@@ -15,7 +15,8 @@
 		"preview": "vite preview",
 		"setup:server": "shx cp data/db.example.json data/db.json",
 		"server": "json-server data/db.json",
-		"prepare": "husky"
+		"prepare": "husky",
+		"cz": "czg"
 	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
@@ -44,6 +45,7 @@
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^6.0.1",
+		"czg": "^1.12.0",
 		"husky": "^9.1.7",
 		"json-server": "1.0.0-beta.15",
 		"shx": "^0.4.0",
