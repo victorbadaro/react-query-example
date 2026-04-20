@@ -1,4 +1,5 @@
 import { Trash2 } from 'lucide-react';
+import type { MouseEvent } from 'react';
 import { useNavigate } from 'react-router';
 import { useDeleteUser } from '@/hooks/users/use-delete-user';
 import { useUsers } from '@/hooks/users/use-users';
@@ -24,6 +25,12 @@ export function UsersList() {
 		return <p className="text-muted">{error.message}</p>;
 	}
 
+	function handleDeleteUserButton(event: MouseEvent<HTMLButtonElement>, id: string) {
+		event.stopPropagation();
+
+		deleteUser(id);
+	}
+
 	return (
 		<Table>
 			<TableHeader>
@@ -41,7 +48,7 @@ export function UsersList() {
 						<TableCell>{user.name}</TableCell>
 						<TableCell>{user.email}</TableCell>
 						<TableCell>
-							<Button type="button" onClick={() => deleteUser(user.id)}>
+							<Button type="button" onClick={(event) => handleDeleteUserButton(event, user.id)}>
 								<Trash2 />
 								Delete user
 							</Button>
