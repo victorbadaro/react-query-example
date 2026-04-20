@@ -40,6 +40,7 @@ Built with a focus on developer experience and scalability, the application hand
 The project follows a modular architecture designed for maintainability and clear separation of responsibilities:
 
 ```text
+data/                # Mock database files (JSON)
 src/
 ├── components/      # UI components (Shadcn) and feature-specific components
 ├── hooks/           # Custom React Query hooks (Domain-driven)
@@ -53,10 +54,11 @@ src/
 
 ### Key Technical Decisions
 
-1.  **Custom Hooks for Server State:** Every API interaction is wrapped in a custom hook. This keeps components clean and ensures that React Query logic (keys, invalidation, mutations) is centralized.
-2.  **HTTP Layer Separation:** We separate the raw `axios` calls (`src/http`) from the React Query hooks (`src/hooks`). This makes the API logic testable in isolation and easy to swap if needed.
-3.  **Automatic Invalidation:** Upon successful mutations (Create/Delete), we use `queryClient.invalidateQueries` to ensure the UI remains in sync with the server data without manual state management.
-4.  **Modern Tooling:** Using **Biome** for extremely fast linting and formatting, and **Vite 8** for an optimized build pipeline.
+1.  **Mock API with JSON Server:** We use `json-server` to simulate a real REST API. The database is stored in `data/db.json`, which is generated from a template to ensure a clean state for every contributor.
+2.  **Custom Hooks for Server State:** Every API interaction is wrapped in a custom hook. This keeps components clean and ensures that React Query logic (keys, invalidation, mutations) is centralized.
+3.  **HTTP Layer Separation:** We separate the raw `axios` calls (`src/http`) from the React Query hooks (`src/hooks`). This makes the API logic testable in isolation and easy to swap if needed.
+4.  **Automatic Invalidation:** Upon successful mutations (Create/Delete), we use `queryClient.invalidateQueries` to ensure the UI remains in sync with the server data without manual state management.
+5.  **Modern Tooling:** Using **Biome** for extremely fast linting and formatting, and **Vite 8** for an optimized build pipeline.
 
 ---
 
@@ -80,6 +82,12 @@ src/
     pnpm install
     ```
 
+3.  **Setup the Mock API:**
+    ```bash
+    pnpm run setup:server
+    ```
+    *This creates a local `data/db.json` from the example template.*
+
 ### Running Locally
 
 This project requires both the frontend and the mock API to be running.
@@ -88,7 +96,7 @@ This project requires both the frontend and the mock API to be running.
     ```bash
     pnpm run server
     ```
-    *This starts `json-server` on `http://localhost:3000`.*
+    *This starts `json-server` on `http://localhost:3000` using `data/db.json`.*
 
 2.  **Start the Development Server:**
     ```bash
@@ -103,6 +111,7 @@ This project requires both the frontend and the mock API to be running.
 | Script | Description |
 | :--- | :--- |
 | `pnpm dev` | Starts the Vite dev server |
+| `pnpm setup:server` | Initializes the local database from the template |
 | `pnpm server` | Runs the mock JSON Server API |
 | `pnpm build` | Builds the project for production |
 | `pnpm check` | Runs Biome linting and formatting checks |

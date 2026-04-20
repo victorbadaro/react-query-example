@@ -13,7 +13,8 @@
 		"check": "biome check",
 		"check:write": "biome check --write",
 		"preview": "vite preview",
-		"server": "json-server db.json"
+		"setup:server": "shx cp data/db.example.json data/db.json",
+		"server": "json-server data/db.json"
 	},
 	"dependencies": {
 		"@fontsource-variable/inter": "^5.2.8",
@@ -41,6 +42,7 @@
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^6.0.1",
 		"json-server": "1.0.0-beta.15",
+		"shx": "^0.4.0",
 		"typescript": "~6.0.2",
 		"vite": "^8.0.4"
 	}
