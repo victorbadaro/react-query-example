@@ -86,7 +86,7 @@ This project requires both the frontend and the mock API to be running.
 
 1.  **Start the Mock API:**
     ```bash
-    pnpm server
+    pnpm run server
     ```
     *This starts `json-server` on `http://localhost:3000`.*
 

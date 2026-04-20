@@ -19,11 +19,6 @@
       "id": "4",
       "name": "Ana Costa",
       "email": "ana.costa@email.com"
-    },
-    {
-      "name": "Victor Afonso Alves Badaró",
-      "email": "victor.badaro@email.com",
-      "id": "d1oDaiXBRww"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
